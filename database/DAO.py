@@ -60,7 +60,9 @@ from	(select g1.Product_number as p1, g2.Product_number as p2, g2.`Date` as d
 		group by p1, p2, d) as t
 group by pp1, pp2
 
- """
+ """#prima un group by con anche il giorno perchè voglio coppie di prodotti conquelle caratteristiche ma in giorni distinti, li voglio
+        #contare in giorni distinti quante volte compare una certa coppia ; poi group by sulla coppia per contare numero di volte in giorni distinti
+        #che compare
         cursor.execute(query, (colore, colore, anno, anno))
         for row in cursor:
             result.append((row["pp1"], row["pp2"], row["c"]))
